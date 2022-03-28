@@ -3,7 +3,7 @@ import './components'
 import App from './index.vue'
 
 // 热更新
-module && module.hot.accept()
+module?.hot?.accept()
 
 new Vue({
   el: '#app',

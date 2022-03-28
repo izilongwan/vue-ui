@@ -1,7 +1,7 @@
 const path = require('path')
 
 module.exports = {
-  entry: '/src/index.js',
+  entry: '/src/index.ts',
 
   output: {
     filename: 'index.js',
@@ -30,7 +30,15 @@ module.exports = {
       {
         test: /\.vue$/,
         use: 'vue-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.tsx?$/,
+        use: ['babel-loader', 'ts-loader'],
+        exclude: /node_modules/,
       }
     ]
   },
 }
+
+export {}

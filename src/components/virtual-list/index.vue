@@ -1,7 +1,7 @@
 <template src="./index.html"></template>
 
 <script>
-import { throttle } from '@/libs/util'
+import { throttle } from '@/util'
 import { useVirtualList } from './hook'
 
 export default {

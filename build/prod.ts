@@ -13,7 +13,7 @@ module.exports = Object.assign({}, base, {
     filename: 'index.js',
     library: {
       type: 'umd',
-      name: 'VueUI',    
+      name: 'VueUI',
       export: 'default',
       // umdNamedDefine: true,
     },
@@ -25,3 +25,5 @@ module.exports = Object.assign({}, base, {
     new VueLoaderPlugin(),
   ],
 })
+
+export {}

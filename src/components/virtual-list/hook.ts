@@ -1,7 +1,7 @@
-import { binarySearch } from '@/libs/util'
+import { binarySearch } from '@/util'
 
-export function useVirtualList(ctx) {
-  function addPosition(len) {
+export function useVirtualList(ctx: any) {
+  function addPosition(len = 10) {
     const { listData,
             positionList,
             startIndex, } = ctx
@@ -20,7 +20,7 @@ export function useVirtualList(ctx) {
 
   function setPositionList() {
     const { $refs, positionList, start, colHeight } = ctx
-    const oItems = Array.from($refs.listRef.children)
+    const oItems = Array.from($refs.listRef.children) as HTMLElement[]
 
     oItems.forEach((oItem, i) => {
       const { height } = oItem.getBoundingClientRect(),
@@ -48,9 +48,9 @@ export function useVirtualList(ctx) {
         marginBottom: mB,
       }
 
-      positionList[idx] = pos
+      positionList[idx] = pos;
 
-      positionList.forEach((pos, i, _) => {
+      (<{top: number, bottom: number, height: number }[]>positionList).forEach((pos, i, _) => {
         if (i > idx) {
           pos.top = _[i - 1].bottom
           pos.bottom = pos.top + pos.height
@@ -59,7 +59,7 @@ export function useVirtualList(ctx) {
     })
   }
 
-  function computedAboveBelowCount(startIndex) {
+  function computedAboveBelowCount(startIndex: number) {
     const { listData, abovePercentage, showCount, belowPercentage } = ctx
     const { floor, min } = Math
 
@@ -69,7 +69,7 @@ export function useVirtualList(ctx) {
     }
   }
 
-  function computedListIndex(startIndex) {
+  function computedListIndex(startIndex: number) {
     const { aboveCount, belowCount } = computedAboveBelowCount(startIndex)
 
     return {
@@ -78,8 +78,8 @@ export function useVirtualList(ctx) {
     }
   }
 
-  function handleScrollEvent(e) {
-    const { scrollTop } = e.target;
+  function handleScrollEvent(e: Event) {
+    const { scrollTop } = e.target as HTMLElement;
 
     setPositionList()
 
@@ -90,7 +90,7 @@ export function useVirtualList(ctx) {
     }
   }
 
-  function handleListIndexChange({ startIndex, scrollTop, e }) {
+  function handleListIndexChange({ startIndex, scrollTop, e }: {startIndex: number, scrollTop: number, e?: Event}) {
     const { throttleHandlePullupLoad,
             handleScroll,
             positionList, } = ctx
@@ -114,7 +114,7 @@ export function useVirtualList(ctx) {
   }
 
   // 是否触底
-  function isScrollAttachedBottom(scrollTop) {
+  function isScrollAttachedBottom(scrollTop: number) {
     const { scrollHeight, clientHeight } = ctx.$refs?.wrapRef
 
     if (scrollTop + clientHeight + ctx.pullupLoadOffset >= scrollHeight) {

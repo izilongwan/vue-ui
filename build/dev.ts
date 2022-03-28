@@ -20,3 +20,6 @@ module.exports = Object.assign({}, base, {
     hot: true,
   }
 })
+
+
+exports = {}

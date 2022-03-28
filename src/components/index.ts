@@ -9,7 +9,7 @@ const m = {
 const Components = Object.values(m)
 
 Components.forEach(component => {
-  component.install = (Vue) => {
+  component.install = (Vue: { component: (arg0: any, arg1: any) => void }) => {
     if (component.installed) {
       return
     }
@@ -19,7 +19,12 @@ Components.forEach(component => {
   }
 })
 
-export function install(Vue) {
+interface IInstall {
+  (Vue: typeof import("vue/types/umd")): any
+  installed?: boolean
+}
+
+export const install: IInstall = (Vue) => {
   if (install.installed) {
     return
   }
