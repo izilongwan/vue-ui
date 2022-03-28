@@ -56,13 +56,13 @@ type IToast = {
   install(Vue: { extend: (arg0: any) => any }): void
   (config: IToastConfig): Function;
   // [K extends T ]?: Function
-  primary?: Function
-  success?: Function
-  danger?: Function
-  warning?: Function
-  info?: Function
-  loading?:Function
-}
+  // primary?: Function
+  // success?: Function
+  // danger?: Function
+  // warning?: Function
+  // info?: Function
+  // loading?:Function
+} & Partial<Record<T, Function>>
 
 const Toast: IToast = ({ type, message, duration, isMaskShow = false, position, onClose }: IToastConfig) => {
   const instance = getInstance(position)
