@@ -1,0 +1,41 @@
+{
+  "name": "@izilong/vue-ui",
+  "version": "1.0.8",
+  "description": "UI for vue",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "scripts": {
+    "dev": "npx webpack serve --config build/dev.js",
+    "build": "npx webpack --config build/prod.js"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "css-loader": "^6.4.0",
+    "faker": "^5.5.3",
+    "html-webpack-plugin": "^5.4.0",
+    "sass": "^1.43.2",
+    "sass-loader": "^12.2.0",
+    "style-loader": "^3.3.0",
+    "vue": "^2.6.14",
+    "vue-loader": "^15.9.8",
+    "vue-template-compiler": "^2.6.14",
+    "webpack": "^5.59.1",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.3.1"
+  },
+  "files": [
+    "dist",
+    "src/components"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/izilongwan/vue-ui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/izilongwan/vue-ui/issues"
+  },
+  "homepage": "https://github.com/izilongwan/vue-ui#readme"
+}
