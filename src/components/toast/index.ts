@@ -49,8 +49,8 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
   instance.$mount(oODiv)
 }
 
-type T = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'
-const types: T[] = ['primary', 'success', 'danger', 'warning', 'info', 'loading']
+type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'
+const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info', 'loading']
 
 type IToast = {
   install(Vue: { extend: (arg0: any) => any }): void
@@ -62,7 +62,9 @@ type IToast = {
   // warning?: Function
   // info?: Function
   // loading?:Function
-} & Partial<Record<T, Function>>
+} & {
+  [K in TName]?: Function;
+}
 
 const Toast: IToast = ({ type, message, duration, isMaskShow = false, position, onClose }: IToastConfig) => {
   const instance = getInstance(position)
