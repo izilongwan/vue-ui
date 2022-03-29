@@ -1,0 +1,79 @@
+@import '~@/styles/mixins.scss';
+@import '~@/styles/color.scss';
+
+.notify-wrap {
+	position: absolute;
+
+	&_list {
+		position: fixed;
+		width: 200px;
+		top: 10%;
+
+		&.center {
+			left: 50%;
+			transform: translateX(-50%);
+		}
+
+		&_item {
+			border-radius: 5px;
+			padding: 5px 10px;
+			opacity: 0;
+			transition: all 0.3s;
+			color: #fff;
+			border: 1px solid;
+			box-shadow: 1px 1px 4px 1px #ccc;
+
+			&-type-primary {
+				background-color: $primary-color;
+				border-color: $primary-bd-color;
+			}
+
+			&-type-success {
+				background-color: $success-color;
+				border-color: $success-bd-color;
+			}
+
+			&-type-info {
+				background-color: $info-color;
+				border-color: $info-bd-color;
+			}
+
+			&-type-warning {
+				background-color: $warning-color;
+				border-color: $warning-bd-color;
+			}
+
+			&-type-danger {
+				background-color: $danger-color;
+				border-color: $danger-bd-color;
+			}
+
+			&-type-loading {
+				background-color: #fff;
+				border-color: #ccc;
+				color: #666;
+			}
+
+			&.fade {
+				opacity: 1;
+			}
+
+			&:not(:first-child) {
+				margin-top: 10px;
+			}
+
+			&_content {
+				&_title {
+					@include ellipsis;
+					padding: 5px 0;
+					font-weight: bold;
+					margin-bottom: 5px;
+
+					&_close {
+						float: right;
+					}
+				}
+			}
+		}
+	}
+}

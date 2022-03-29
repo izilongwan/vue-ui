@@ -1,9 +1,13 @@
+import '@/styles/index.scss'
+
 import VirtualList from './virtual-list'
 import Toast from './toast'
+import Notify from './notify'
 
 const m = {
   VirtualList,
-  Toast
+  Toast,
+  Notify
 }
 
 const Components = Object.values(m)
@@ -37,18 +41,21 @@ export const install: IInstall = (Vue) => {
 }
 
 let GlobalVue = null;
+
 if (typeof window !== 'undefined') {
   GlobalVue = window.Vue;
 } else if (typeof global !== 'undefined') {
   GlobalVue = global.Vue;
 }
+
 if (GlobalVue) {
   install(GlobalVue)
 }
 
 export {
   VirtualList,
-  Toast
+  Toast,
+  Notify
 }
 
 export default m
