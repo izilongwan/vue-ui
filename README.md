@@ -23,7 +23,7 @@ Notify[type](message, duration, isMaskShow, position)
 ```
 
 ```js
-Loading({ message, duration, isMaskShow, position })
+Loading({ message, duration, imgSrc isMaskShow, position })
 ```
 
 

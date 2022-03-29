@@ -1,6 +1,7 @@
 import NotifyComponent from './index.vue'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
+import { INotify, INotifyConfig, TName } from './typing'
 
 const positionStateInstance: {
   [key: string]: any
@@ -49,15 +50,7 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
   instance.$mount(oODiv)
 }
 
-type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'
 const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info', 'loading']
-
-type INotify = {
-  install(Vue: { extend: (arg0: any) => any }): void
-  (config: INotifyConfig): Function;
-} & {
-  [K in TName]?: Function;
-}
 
 const Notify: INotify = ({ type, message, title, duration, position, onClose }: INotifyConfig) => {
   const instance = getInstance(position)
@@ -84,16 +77,6 @@ types.forEach(type => {
 
 Notify.install = (Vue: { extend: (arg0: any) => any }) => {
   Ctr = Vue.extend(NotifyComponent)
-}
-
-interface INotifyConfig {
-  type?: string
-  title?: string
-  message?: string
-  duration?: number
-  isMaskShow?: boolean
-  position: Object
-  onClose: Function
 }
 
 export default Notify
