@@ -1,7 +1,7 @@
 <div class="notify-wrap">
   <div :class="`notify-wrap_list ${ position ? '' : 'center' }`" :style="position">
     <div v-for="item of list" :key="item.id"
-      :class="['notify-wrap_list_item', `notify-wrap_list_item-type-${ item.type }`, item.isShow ? 'fade' : '']">
+      :class="`notify-wrap_list_item notify-wrap_list_item-type-${ item.type } ${item.isShow ? 'fade' : ''}`">
 
       <span class="notify-wrap_list_item_icon"></span>
 
