@@ -1,7 +1,7 @@
 <template src="./index.html"></template>
 
 <script>
-import img from '@/assets/images/Walk.gif'
+import img from '@/assets/images/loading1.gif'
 
 export default {
   name: 'Loading',

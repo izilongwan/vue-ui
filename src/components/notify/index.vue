@@ -10,6 +10,7 @@ export default {
 
   data() {
     return {
+      listMap: {},
       list: [],
       delay: 300,
     }
@@ -17,8 +18,10 @@ export default {
 
   methods: {
     add ({ type = 'primary', title = 'Notify', message = 'message', duration = 2000, onClose = () => {} }) {
+      const id = 'notify_' + Date.now() + '_' + String(Math.random()).slice(2)
+
       const item = {
-        id: 'notify_' + Date.now() + '_' + String(Math.random()).slice(2),
+        id,
         type,
         title,
         message,
@@ -27,25 +30,24 @@ export default {
         onClose,
       }
 
+      this.listMap[id] = item
       this.list.push(item)
 
-      const { id, duration: durationT } = item
-
-      durationT > 0 && setTimeout(() => {
+      duration > 0 && setTimeout(() => {
         this.hide(id)
-      }, durationT)
+      }, duration)
 
       return () => this.hide(id)
     },
 
     hide(id) {
-      let idx = this.findListIndex(id)
-      this.list[idx].isShow = false
+      this.listMap[id].isShow = false
 
       setTimeout((id) => {
-        idx = this.findListIndex(id)
-        this.list[idx].onClose(id, idx);
-        this.list.splice(idx, 1)
+        const idx = this.findListIndex(id)
+        this.listMap?.[id]?.onClose(id, idx)
+        idx >= 0 && this.list.splice(idx, 1)
+        delete this.listMap?.[id]
       }, this.delay, id)
     },
 
