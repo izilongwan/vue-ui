@@ -1,4 +1,4 @@
-import ToastComponent from './index.vue'
+import NotifyComponent from './index.vue'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
 
@@ -24,7 +24,7 @@ function getInstance(position: any) {
   }
 
   if (!Ctr) {
-    Ctr = Vue.extend(ToastComponent)
+    Ctr = Vue.extend(NotifyComponent)
   }
 
   if (position) {
@@ -52,49 +52,43 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
 type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'
 const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info', 'loading']
 
-type IToast = {
+type INotify = {
   install(Vue: { extend: (arg0: any) => any }): void
-  (config: IToastConfig): Function;
-  // [K extends T ]?: Function
-  // primary?: Function
-  // success?: Function
-  // danger?: Function
-  // warning?: Function
-  // info?: Function
-  // loading?:Function
+  (config: INotifyConfig): Function;
 } & {
   [K in TName]?: Function;
 }
 
-const Toast: IToast = ({ type, message, duration, isMaskShow = false, position, onClose }: IToastConfig) => {
+const Notify: INotify = ({ type, message, title, duration, position, onClose }: INotifyConfig) => {
   const instance = getInstance(position)
 
-  return instance.add({ type, message, duration, isMaskShow, onClose })
+  return instance.add({ type, title, message, duration, onClose })
 }
 
 types.forEach(type => {
-  Toast[type] = (message: string | IToastConfig, duration: number, isMaskShow = false, position: Object, onClose: Function) => {
+  Notify[type] = (message: string | INotifyConfig, duration: number, position: Object, onClose: Function, title: string) => {
     if (message && typeof message === 'object') {
-      return Toast({ ...message, type })
+      return Notify({ ...message, type })
     }
 
-    return Toast({
+    return Notify({
       type,
+      title,
       message,
       duration,
-      isMaskShow,
       position,
       onClose,
     })
   }
 })
 
-Toast.install = (Vue: { extend: (arg0: any) => any }) => {
-  Ctr = Vue.extend(ToastComponent)
+Notify.install = (Vue: { extend: (arg0: any) => any }) => {
+  Ctr = Vue.extend(NotifyComponent)
 }
 
-interface IToastConfig {
+interface INotifyConfig {
   type?: string
+  title?: string
   message?: string
   duration?: number
   isMaskShow?: boolean
@@ -102,4 +96,4 @@ interface IToastConfig {
   onClose: Function
 }
 
-export default Toast
+export default Notify

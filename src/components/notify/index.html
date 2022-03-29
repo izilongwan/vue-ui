@@ -1,0 +1,21 @@
+<div class="notify-wrap">
+  <div :class="`notify-wrap_list ${ position ? '' : 'center' }`" :style="position">
+    <div v-for="item of list" :key="item.id"
+      :class="['notify-wrap_list_item', `notify-wrap_list_item-type-${ item.type }`, item.isShow ? 'fade' : '']">
+
+      <span class="notify-wrap_list_item_icon"></span>
+
+      <div class="notify-wrap_list_item_content">
+
+        <h3 class="notify-wrap_list_item_content_title">
+          <span class="notify-wrap_list_item_content_title_txt">{{item.title}}</span>
+          <span class="notify-wrap_list_item_content_title_close" @click="hide(item.id)">X</span>
+        </h3>
+
+        <p class="notify-wrap_list_item_content_text" v-html="item.message">
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
