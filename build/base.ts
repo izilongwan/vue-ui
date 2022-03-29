@@ -33,6 +33,25 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
+        test: /\.(png|jpg|gif|svg|webp|jpeg|ico)$/i,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              fallback: {
+                loader: 'file-loader',
+                options: {
+                  name: 'images/[name]-[contenthash:6].[ext]'
+                }
+              },
+
+              limit: 1024 * 100
+            }
+          }
+        ],
+        exclude: /node_modules/,
+      },
+      {
         test: /\.tsx?$/,
         use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,

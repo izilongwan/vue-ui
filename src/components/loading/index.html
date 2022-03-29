@@ -4,7 +4,9 @@
 
       <div class="loading-wrap_bd_item_content">
 
-        <div class="loading-wrap_bd_item_content_icon"></div>
+        <div class="loading-wrap_bd_item_content_icon">
+          <img :src="img" alt="loading..." />
+        </div>
 
         <p class="loading-wrap_bd_item_content_text" v-html="item.message" v-if="item.message">
         </p>

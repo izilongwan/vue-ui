@@ -13,8 +13,6 @@
 	&_bd {
 		position: fixed;
 		z-index: 999;
-		width: 100px;
-		height: 100px;
 
 		&.center {
 			top: 50%;
@@ -35,12 +33,11 @@
 			}
 
 			&_content {
-				display: flex;
-				flex-direction: column;
 				height: 100%;
 
 				&_icon {
-					flex: 1;
+					min-width: 50px;
+					min-height: 50px;
 					text-align: center;
 				}
 
