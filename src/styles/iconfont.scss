@@ -1,38 +1,38 @@
 @font-face {
-  font-family: "iconfont"; /* Project id 3287589 */
-  src: url('../assets/fonts/iconfont.woff2?t=1648552006416') format('woff2'),
-       url('../assets/fonts/iconfont.woff?t=1648552006416') format('woff'),
-       url('../assets/fonts/iconfont.ttf?t=1648552006416') format('truetype');
+	font-family: 'iconfont'; /* Project id 3287589 */
+	src: url('../assets/fonts/iconfont.woff2?t=1648552006416') format('woff2'),
+		url('../assets/fonts/iconfont.woff?t=1648552006416') format('woff'),
+		url('../assets/fonts/iconfont.ttf?t=1648552006416') format('truetype');
 }
 
 .iconfont {
-  font-family: "iconfont" !important;
-  font-size: 16px;
-  font-style: normal;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	font-family: 'iconfont' !important;
+	font-size: 16px;
+	font-style: normal;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .icon-error1:before {
-  content: "\e633";
+	content: '\e633';
 }
 
-.icon-error:before {
-  content: "\e634";
+.icon-danger:before {
+	content: '\e634';
 }
 
 .icon-primary:before {
-  content: "\e65f";
+	content: '\e65f';
 }
 
 .icon-success:before {
-  content: "\e726";
+	content: '\e726';
 }
 
 .icon-info:before {
-  content: "\e66f";
+	content: '\e66f';
 }
 
-.icon-warn:before {
-  content: "\e67e";
+.icon-warning:before {
+	content: '\e67e';
 }
