@@ -1,12 +1,12 @@
 import '@/styles/index.scss'
 
 import VirtualList from './virtual-list'
-import Toast from './toast'
+import Loading from './loading'
 import Notify from './notify'
 
 const m = {
   VirtualList,
-  Toast,
+  Loading,
   Notify
 }
 
@@ -54,7 +54,7 @@ if (GlobalVue) {
 
 export {
   VirtualList,
-  Toast,
+  Loading,
   Notify
 }
 

@@ -12,8 +12,7 @@
           <span class="notify-wrap_list_item_content_title_close" @click="hide(item.id)">X</span>
         </h3>
 
-        <p class="notify-wrap_list_item_content_text">
-          {{ item.message }}
+        <p class="notify-wrap_list_item_content_text" v-html="item.message">
         </p>
       </div>
 

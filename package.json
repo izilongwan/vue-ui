@@ -1,6 +1,6 @@
 {
   "name": "@izilong/vue-ui",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "UI for vue",
   "main": "./dist/index.js",
   "module": "./dist/index.js",

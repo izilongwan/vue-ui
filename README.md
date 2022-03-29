@@ -9,18 +9,23 @@ $ or yarn add @izilong/vue-ui
 
 - js
 ```shell
-import VueUI, { Toast, VurtualList } from '@izilong/vue-ui'
+import VueUI, { Notify, Loading, VurtualList } from '@izilong/vue-ui'
 ```
 
-Toast
+Notify
 ```js
-<!--type = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'-->
+<!--type = 'primary' | 'success' | 'danger' | 'warning' | 'info'-->
 
-Toast({ type, message, duration, isMaskShow, position })
+Notify({ type, message, duration, isMaskShow, position })
 
-Toast[type](message, duration, isMaskShow, position)
+Notify[type](message, duration, isMaskShow, position)
 
 ```
+
+```js
+Loading({ message, duration, isMaskShow, position })
+```
+
 
 
 - VirtualList
