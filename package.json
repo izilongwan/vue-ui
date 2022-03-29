@@ -4,6 +4,7 @@
   "description": "UI for vue",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "types": "./dist/src/index.d.ts",
   "scripts": {
     "dev": "npx webpack serve --config build/dev.ts",
     "build": "npx webpack --config build/prod.ts"

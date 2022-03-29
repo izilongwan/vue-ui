@@ -1,4 +1,4 @@
-export type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'
+export type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info'
 
 export type INotify = {
   install(Vue: { extend: (arg0: any) => any }): void

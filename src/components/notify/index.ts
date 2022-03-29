@@ -50,7 +50,7 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
   instance.$mount(oODiv)
 }
 
-const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info', 'loading']
+const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info']
 
 const Notify: INotify = ({ type, message, title, duration, position, onClose }: INotifyConfig) => {
   const instance = getInstance(position)
