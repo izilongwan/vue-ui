@@ -1,4 +1,5 @@
 const base = require('./base')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const { VueLoaderPlugin } = require('vue-loader')
 
@@ -23,6 +24,9 @@ module.exports = Object.assign({}, base, {
 
   plugins: [
     new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/index.css'
+    }),
   ],
 })
 

@@ -32,7 +32,7 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
   instance.$mount(oODiv)
 }
 
-const Loading: ILoading = ({ message, duration, imgSrc, isMaskShow = true, position, onClose }: ILoadingConfig = {}) => {
+export const Loading: ILoading = ({ message, duration, imgSrc, isMaskShow = true, position, onClose }: ILoadingConfig = {}) => {
   const instance = getInstance(position)
 
   return instance.show({ message, imgSrc, duration, isMaskShow, position, onClose })

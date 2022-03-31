@@ -1,4 +1,7 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const { mode } = process.env
 
 module.exports = {
   entry: '/src/index.ts',
@@ -21,7 +24,9 @@ module.exports = {
       {
         test: /\.s?css$/,
         use: [
-          'style-loader',
+          mode === 'prod'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
           'css-loader',
           'sass-loader',
         ],

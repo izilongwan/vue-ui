@@ -4,7 +4,7 @@ export type INotify = {
   install(Vue: { extend: (arg0: any) => any }): void
   (config: INotifyConfig): Function;
 } & {
-  [K in TName]?: Function;
+  [K in TName]: Function
 }
 
 export interface INotifyConfig {

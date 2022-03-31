@@ -10,6 +10,7 @@ $ or yarn add @izilong/vue-ui
 - js
 ```js
 import VueUI, { Notify, Loading, VurtualList } from '@izilong/vue-ui'
+import '@izilong/vue-ui/dist/css/index.css'
 ```
 
 - Notify
