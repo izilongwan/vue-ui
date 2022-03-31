@@ -8,11 +8,11 @@ $ or yarn add @izilong/vue-ui
 
 
 - js
-```shell
+```js
 import VueUI, { Notify, Loading, VurtualList } from '@izilong/vue-ui'
 ```
 
-Notify
+- Notify
 ```js
 <!--type = 'primary' | 'success' | 'danger' | 'warning' | 'info'-->
 
@@ -22,11 +22,10 @@ Notify[type](message, duration, isMaskShow, position)
 
 ```
 
+- Loading
 ```js
 Loading({ message, duration, imgSrc isMaskShow, position })
 ```
-
-
 
 - VirtualList
 ```vue
@@ -43,3 +42,32 @@ Loading({ message, duration, imgSrc isMaskShow, position })
     </template>
 </VirtualList>
 ```
+
+
+## API Reference
+
+```js
+  Notify
+```
+
+| Parameter | Type     | Description                |
+| :-------- | :------- | :------------------------- |
+| `type` | `string` | **Optional**. primary / success / danger / warning / info
+| `message` | `string` | **Optional**. message
+| `duration` | `number` | **Optional**. duration
+| `isMaskShow` | `boolean` | **Optional**. is show mask
+| `position` | `object` | **Optional**. {top: 10%, left: 50%}
+
+
+
+```js
+  Loading
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `imgSrc` | `string` | **Optional**. img src
+| `message` | `string` | **Optional**. message
+| `duration` | `number` | **Optional**. duration
+| `isMaskShow` | `boolean` | **Optional**. is show mask
+| `position` | `object` | **Optional**. {top: 10%, left: 50%}
