@@ -45,7 +45,7 @@ module.exports = {
                 }
               },
 
-              limit: 1024 * 30
+              limit: 1024 * 50
             }
           }
         ],
@@ -78,4 +78,4 @@ module.exports = {
   },
 }
 
-export {}
+export { }
