@@ -45,7 +45,7 @@ module.exports = {
                 }
               },
 
-              limit: 1024 * 100
+              limit: 1024 * 30
             }
           }
         ],
@@ -54,6 +54,24 @@ module.exports = {
       {
         test: /\.tsx?$/,
         use: ['babel-loader', 'ts-loader'],
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i, // 处理字体
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024 * 20,
+              fallback: {
+                loader: 'file-loader',
+                options: {
+                  name: 'fonts/[name]-[contenthash:6].[ext]'
+                }
+              }
+            }
+          }
+        ],
         exclude: /node_modules/,
       }
     ]

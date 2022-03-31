@@ -15,7 +15,7 @@ module.exports = Object.assign({}, base, {
   ],
 
   devServer: {
-    port: 3001,
+    port: 3002,
     compress: true,
     hot: true,
   }

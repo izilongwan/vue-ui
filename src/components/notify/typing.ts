@@ -10,9 +10,9 @@ export type INotify = {
 export interface INotifyConfig {
   type?: string
   title?: string
-  message?: string
+  message: string
   duration?: number
   isMaskShow?: boolean
-  position: Object
-  onClose: Function
+  position?: Object
+  onClose?: Function
 }

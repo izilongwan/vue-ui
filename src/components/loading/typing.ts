@@ -3,8 +3,8 @@ export interface ILoadingConfig {
   message?: string
   duration?: number
   isMaskShow?: boolean
-  position: Object
-  onClose: Function
+  position?: Object
+  onClose?: Function
 }
 
 export interface ILoading {

@@ -79,4 +79,4 @@ Notify.install = (Vue: { extend: (arg0: any) => any }) => {
   Ctr = Vue.extend(NotifyComponent)
 }
 
-export default Notify
+export default Notify as Required<INotify>
