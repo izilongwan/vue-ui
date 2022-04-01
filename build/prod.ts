@@ -8,7 +8,7 @@ const path = require('path')
 module.exports = Object.assign({}, base, {
   mode: 'production',
 
-  entry: path.resolve(__dirname, '../src/components/index.ts'),
+  entry: path.resolve(__dirname, '../src/index.ts'),
 
   output: {
     filename: 'index.js',

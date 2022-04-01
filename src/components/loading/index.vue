@@ -37,7 +37,14 @@ export default {
         this.hide()
       }, duration)
 
-      return () => this.hide()
+      const rs = {
+        ref: this.$el,
+        close: () => this.hide()
+      }
+
+      this.$nextTick(() => rs.ref = this.$el)
+
+      return rs
     },
 
     hide() {

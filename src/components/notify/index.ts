@@ -65,7 +65,7 @@ Notify.warning = function() {}
 Notify.info = function() {}
 
 types.forEach(type => {
-  Notify[type] = (message: string | INotifyConfig, duration: number, position: Object, onClose: Function, title: string) => {
+  Notify[type] = (message, title, duration, position, onClose) => {
     if (message && typeof message === 'object') {
       return Notify({ ...message, type })
     }
