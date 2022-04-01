@@ -1,3 +1,5 @@
+import { CombinedVueInstance } from 'vue/types/vue';
+
 export interface ILoadingConfig {
   imgSrc?: string,
   message?: string
@@ -9,5 +11,12 @@ export interface ILoadingConfig {
 
 export interface ILoading {
   install(Vue: { extend: (arg0: any) => any }): void
-  show(config: ILoadingConfig): { ref: HTMLElement, close: Function };
+  show(config?: ILoadingConfig): ILoadingRet;
+}
+
+export interface ILoadingRet {
+  config: ILoadingConfig & { id: string }
+  ctx: CombinedVueInstance<Vue, object, object, object, Record<never, any>>
+  ref: HTMLElement
+  close: Function
 }

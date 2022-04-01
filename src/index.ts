@@ -16,7 +16,7 @@ Components.forEach(component => {
   }
 })
 
-interface IInstall {
+export interface IInstall {
   (Vue: typeof import("vue/types/umd")): any
   installed?: boolean
 }

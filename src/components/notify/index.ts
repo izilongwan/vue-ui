@@ -71,19 +71,8 @@ export const Notify: INotify = {
 }
 
 types.forEach(type => {
-  Notify[type] = (message, title, duration, position, onClose) => {
-    if (message && typeof message === 'object') {
-      return Notify.show({ ...message, type })
-    }
-
-    return Notify.show({
-      type,
-      title,
-      message,
-      duration,
-      position,
-      onClose,
-    })
+  Notify[type] = (config) => {
+    return Notify.show(config)
   }
 })
 

@@ -6,16 +6,6 @@ import { ILoading } from './typing'
 let Ctr: VueConstructor
 
 function getInstance(position: any): any {
-  let positionKey = 'center'
-
-  try {
-    positionKey = JSON.stringify(position)
-  } catch (error) {
-
-  } finally {
-    !positionKey && (positionKey = 'center')
-  }
-
   if (!Ctr) {
     Ctr = Vue.extend(LoadingComponent)
   }

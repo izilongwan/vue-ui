@@ -38,6 +38,8 @@ export default {
       }, duration)
 
       const rs = {
+        config: this.item,
+        ctx: this,
         ref: this.$el,
         close: () => this.hide()
       }

@@ -1,6 +1,6 @@
-<div class="loading-wrap" v-if="item" ref="ref">
-  <div :class="`loading-wrap_bd ${ position ? '' : 'center' }`" :style="position">
-    <div :class="`loading-wrap_bd_item ${item.isShow ? 'fade' : ''}`">
+<div class="loading-wrap" v-if="item">
+  <ul :class="`loading-wrap_bd ${ position ? '' : 'center' }`" :style="position">
+    <li :class="`loading-wrap_bd_item ${item.isShow ? 'fade' : ''}`">
 
       <div class="loading-wrap_bd_item_content">
 
@@ -12,8 +12,8 @@
         </p>
       </div>
 
-    </div>
-  </div>
+    </li>
+  </ul>
 
   <div class="loading-wrap_mask" v-if="item.isMaskShow"></div>
 </div>

@@ -37,10 +37,19 @@ export default {
         this.hide(id)
       }, duration)
 
-      return {
+      const rs = {
+        ctx: this,
+        config: item,
         ref: null,
         close: () => this.hide(id)
       }
+
+      this.$nextTick(() => {
+        const idx = this.findListIndex(id)
+        rs.ref = this.$refs.ref?.[idx]
+      })
+
+      return rs
     },
 
     hide(id) {
