@@ -52,25 +52,31 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
 
 const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info']
 
-export const Notify: INotify = ({ type, message, title, duration, position, onClose }: INotifyConfig) => {
-  const instance = getInstance(position)
+export const Notify: INotify = {
+  show({ type, message, title, duration, position, onClose }) {
+    const instance = getInstance(position)
 
-  return instance.add({ type, title, message, duration, onClose })
+    return instance.add({ type, title, message, duration, onClose })
+  },
+
+  install(Vue: { extend: (arg0: any) => any }) {
+    Ctr = Vue.extend(NotifyComponent)
+  },
+
+  primary(config): any { },
+  success(config): any { },
+  danger(config): any { },
+  warning(config): any { },
+  info(config): any { },
 }
-
-Notify.primary = function() {}
-Notify.success = function() {}
-Notify.danger = function() {}
-Notify.warning = function() {}
-Notify.info = function() {}
 
 types.forEach(type => {
   Notify[type] = (message, title, duration, position, onClose) => {
     if (message && typeof message === 'object') {
-      return Notify({ ...message, type })
+      return Notify.show({ ...message, type })
     }
 
-    return Notify({
+    return Notify.show({
       type,
       title,
       message,
@@ -81,8 +87,4 @@ types.forEach(type => {
   }
 })
 
-Notify.install = (Vue: { extend: (arg0: any) => any }) => {
-  Ctr = Vue.extend(NotifyComponent)
-}
-
-export default Notify as Required<INotify>
+export default Notify

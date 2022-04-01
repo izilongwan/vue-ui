@@ -2,9 +2,9 @@ export type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info'
 
 export type INotify = {
   install(Vue: { extend: (arg0: any) => any }): void
-  (config: INotifyConfig): Function;
+  show(config: INotifyConfig): { ref: HTMLElement, close: Function }
 } & {
-  [K in TName]: (...args: TNameConfig) => any
+  [K in TName]: (...args: TNameConfig) => ({ ref: HTMLElement, close: Function })
 }
 
 export type TNameConfig = [message: string | INotifyConfig, title?: string, duration?: number, position?: Object, onClose?: Function]

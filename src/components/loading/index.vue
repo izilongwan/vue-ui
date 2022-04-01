@@ -19,7 +19,7 @@ export default {
   },
 
   methods: {
-    show ({ message = '', imgSrc = '', duration = 2000, isMaskShow = true, onClose = () => {} } = {}) {
+    show ({ message = '', imgSrc = '', duration = -1, isMaskShow = true, onClose = () => {} } = {}) {
       const item = {
         id: 'toast_' + Date.now() + '_' + String(Math.random()).slice(2),
         message,

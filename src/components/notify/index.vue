@@ -17,7 +17,7 @@ export default {
   },
 
   methods: {
-    add ({ type = 'primary', title = 'Notify', message = 'message', duration = 2000, onClose = () => {} }) {
+    add ({ type = 'primary', title = 'Notify', message = '', duration = 2000, onClose = () => {} }) {
       const id = 'notify_' + Date.now() + '_' + String(Math.random()).slice(2)
 
       const item = {
@@ -37,7 +37,10 @@ export default {
         this.hide(id)
       }, duration)
 
-      return () => this.hide(id)
+      return {
+        ref: null,
+        close: () => this.hide(id)
+      }
     },
 
     hide(id) {
