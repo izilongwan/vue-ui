@@ -9,5 +9,5 @@ export interface ILoadingConfig {
 
 export interface ILoading {
   install(Vue: { extend: (arg0: any) => any }): void
-  (config: ILoadingConfig): Function;
+  show(config: ILoadingConfig): { ref: HTMLElement, close: Function };
 }

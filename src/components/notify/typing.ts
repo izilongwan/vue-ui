@@ -4,8 +4,10 @@ export type INotify = {
   install(Vue: { extend: (arg0: any) => any }): void
   (config: INotifyConfig): Function;
 } & {
-  [K in TName]: Function
+  [K in TName]: (...args: TNameConfig) => any
 }
+
+export type TNameConfig = [message: string | INotifyConfig, title?: string, duration?: number, position?: Object, onClose?: Function]
 
 export interface INotifyConfig {
   type?: string

@@ -1,7 +1,7 @@
 import LoadingComponent from './index.vue'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
-import { ILoading, ILoadingConfig } from './typing'
+import { ILoading } from './typing'
 
 let Ctr: VueConstructor
 
@@ -32,14 +32,16 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
   instance.$mount(oODiv)
 }
 
-export const Loading: ILoading = ({ message, duration, imgSrc, isMaskShow = true, position, onClose }: ILoadingConfig = {}) => {
-  const instance = getInstance(position)
+export const Loading: ILoading = {
+  show({ message, imgSrc, duration, isMaskShow, position, onClose } = {}) {
+    const instance = getInstance(position)
 
-  return instance.show({ message, imgSrc, duration, isMaskShow, position, onClose })
-}
+    return instance.show({ message, imgSrc, duration, isMaskShow, position, onClose })
+  },
 
-Loading.install = (Vue: { extend: (arg0: any) => any }) => {
-  Ctr = Vue.extend(LoadingComponent)
+  install(Vue: { extend: (arg0: any) => any }) {
+    Ctr = Vue.extend(LoadingComponent)
+  }
 }
 
 export default Loading

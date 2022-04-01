@@ -7,7 +7,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "npx webpack serve --config build/dev.ts",
-    "build": "mode=prod npx webpack --config build/prod.ts",
+    "build": "npx webpack --config build/prod.ts",
     "publish": "npm run build && npm publish"
   },
   "dependencies": {
