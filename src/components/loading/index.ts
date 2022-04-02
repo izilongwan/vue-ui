@@ -31,7 +31,9 @@ export const Loading: ILoading = {
 
   install(Vue: { extend: (arg0: any) => any }) {
     Ctr = Vue.extend(LoadingComponent)
-  }
+  },
+
+  ...LoadingComponent,
 }
 
 export default Loading

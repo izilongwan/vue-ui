@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
 import NotifyComponent from './index.vue'
-import { INotify, INotifyConfig, TName } from './typing'
+import { INotify, TName } from './typing'
 
 const positionStateInstance: {
   [key: string]: any
@@ -68,10 +68,13 @@ export const Notify: INotify = {
   danger(config): any { },
   warning(config): any { },
   info(config): any { },
+  ...NotifyComponent,
 }
 
 types.forEach(type => {
   Notify[type] = (config) => {
+    Object.assign(config, { type })
+
     return Notify.show(config)
   }
 })

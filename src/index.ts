@@ -1,23 +1,34 @@
 import '@/styles/index.scss'
 
 import * as UI from './components'
+import { formatComponentName } from './util';
 export * from './components'
 
 const Components = Object.values(UI)
 
-Components.forEach(component => {
-  component.install = (Vue: { component: (arg0: any, arg1: any) => void }) => {
-    if (component.installed) {
-      return
-    }
+// 单个组件添加install属性
+function componentInstall() {
+  Components.forEach(component => {
+    component.install = (Vue: TVueConfig) => {
+      if (component.installed || !component.name) {
+        return
+      }
 
-    Vue.component(component.name, component)
-    component.installed = true
-  }
-})
+      // 中横线组件命名
+      Vue.component(formatComponentName(component.name), component)
+      // 大驼峰组件命名
+      Vue.component(formatComponentName(component.name, 1), component)
+      component.installed = true
+    }
+  })
+}
+
+componentInstall()
+
+export type TVueConfig = typeof import("vue/types/umd")
 
 export interface IInstall {
-  (Vue: typeof import("vue/types/umd")): any
+  (V: TVueConfig): any
   installed?: boolean
 }
 
@@ -29,20 +40,30 @@ export const install: IInstall = (Vue) => {
 	install.installed = true;
 
   Components.forEach(component => {
+
+    if (!component.name) {
+      return
+    }
+
     Vue.component(component.name, component)
   })
 }
 
-let GlobalVue = null;
+// let GlobalVue = null;
 
-if (typeof window !== 'undefined') {
-  GlobalVue = window.Vue;
-} else if (typeof global !== 'undefined') {
-  GlobalVue = global.Vue;
+// if (typeof window !== 'undefined') {
+//   GlobalVue = window.Vue;
+// } else if (typeof global !== 'undefined') {
+//   GlobalVue = global.Vue;
+// }
+
+// if (GlobalVue) {
+//   install(GlobalVue)
+// }
+
+const _UI = {
+  ...UI,
+  install: (Vue: TVueConfig) => install(Vue)
 }
 
-if (GlobalVue) {
-  install(GlobalVue)
-}
-
-export default UI
+export default _UI
