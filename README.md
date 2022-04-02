@@ -55,8 +55,8 @@ Loading({ message, duration, imgSrc isMaskShow, position })
 | :-------- | :------- | :------------------------- |
 | `type` | `string` | **Optional**. primary / success / danger / warning / info
 | `message` | `string` | **Optional**. message
+| `title` | `string` | **Optional**. title
 | `duration` | `number` | **Optional**. duration
-| `isMaskShow` | `boolean` | **Optional**. is show mask
 | `position` | `object` | **Optional**. {top: 10%, left: 50%}
 
 
