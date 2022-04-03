@@ -22,6 +22,15 @@ module.exports = Object.assign({}, base, {
     clean: true,
   },
 
+  externals: {
+    vue: {
+      root: "Vue",
+      commonjs2: "vue",
+      commonjs: "vue",
+      amd: "vue"
+    },
+  },
+
   plugins: [
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({

@@ -8,11 +8,8 @@
 		position: fixed;
 		width: 200px;
 		top: 5%;
-
-		&.center {
-			left: 50%;
-			transform: translateX(-50%);
-		}
+		left: 50%;
+		transform: translateX(-50%);
 
 		&_item {
 			display: flex;
@@ -69,26 +66,35 @@
 			}
 
 			&_content {
+				max-width: 85%;
 				flex: 1;
 
 				&_title {
 					@include ellipsis;
-					padding: 5px 0;
-					margin-bottom: 5px;
-					line-height: 20px;
+					position: relative;
+					padding: 5px 20px 5px 0;
+					height: 20px;
 					font-weight: bold;
+					justify-content: space-between;
+					align-items: center;
 
 					&_close {
-						float: right;
+						position: absolute;
+						top: 1px;
+						right: 0;
 						cursor: pointer;
 						transition: transform 0.4s;
 						transform: rotate(45deg);
-						font-size: 22px;
+						font-size: 25px;
 
 						&:hover {
 							transform: rotate(135deg);
 						}
 					}
+				}
+
+				&_text {
+					margin-bottom: 5px;
 				}
 			}
 		}
