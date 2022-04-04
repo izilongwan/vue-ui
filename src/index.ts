@@ -1,29 +1,31 @@
 import '@/styles/index.scss'
 
 import * as UI from './components'
-import { formatComponentName } from './util';
+import { formatComponentName, mediumHorizontalName } from './util';
 export * from './components'
 
-const Components = Object.values(UI)
+// 过滤掉非组件
+const Components = Object.values(UI).filter(o => o.name)
 
 // 单个组件添加install属性
-function componentInstall() {
+;((Components) => {
   Components.forEach(component => {
+
+    component.name = formatComponentName(component.name, 1)
+
     component.install = (Vue: TVueConfig) => {
-      if (component.installed || !component.name) {
+      if (component.installed) {
         return
       }
 
-      // 中横线组件命名
-      Vue.component(formatComponentName(component.name), component)
       // 大驼峰组件命名
-      Vue.component(formatComponentName(component.name, 1), component)
+      Vue.component(component.name, component)
+      // 中横线组件命名
+      Vue.component(mediumHorizontalName(component.name), component)
       component.installed = true
     }
   })
-}
-
-componentInstall()
+})(Components);
 
 export type TVueConfig = typeof import("vue/types/umd")
 
@@ -41,10 +43,6 @@ export const install: IInstall = (Vue) => {
 
   Components.forEach(component => {
 
-    if (!component.name) {
-      return
-    }
-
     Vue.component(component.name, component)
   })
 }
@@ -61,9 +59,9 @@ export const install: IInstall = (Vue) => {
 //   install(GlobalVue)
 // }
 
-const _UI = {
+const VUI = {
   ...UI,
   install: (Vue: TVueConfig) => install(Vue)
 }
 
-export default _UI
+export default VUI

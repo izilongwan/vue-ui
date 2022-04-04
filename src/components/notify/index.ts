@@ -9,8 +9,8 @@ const positionStateInstance: {
 
 let Ctr: VueConstructor
 
-function getInstance(position: any) {
-  let positionKey = 'center'
+function getInstance(position: Record<string, any>) {
+  let positionKey = 'default'
 
   try {
     positionKey = JSON.stringify(position)
@@ -53,10 +53,10 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
 const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info']
 
 export const Notify: INotify = {
-  show({ type, message, title, duration, position, onClose }) {
-    const instance = getInstance(position)
+  show(options) {
+    const instance = getInstance(options.position!)
 
-    return instance.add({ type, title, message, duration, onClose })
+    return instance.add(options)
   },
 
   install(Vue: { extend: (arg0: any) => any }) {

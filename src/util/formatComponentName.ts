@@ -6,16 +6,24 @@
  */
 export function formatComponentName(str: string, type = 0) {
   if (type === 0) {
-    const s = str.replace(/([A-z])/, (node, key) => {
-      if (key === key.toUpperCase()) {
-        return `-${ key.toLowerCase() }`
-      }
+    return str.replace(/([A-Z])/g, (node, key, idx) => {
+      const name = key.toLowerCase()
 
-      return key
+      return !idx ? `v-${ name }` : `-${ name }`
     })
-
-    return `v-${ s }`.replace(/--/, '-')
   }
 
   return `V${ str }`
+}
+
+export function mediumHorizontalName(str: string) {
+  let s = str.replace(/-([a-z])/g, (node, key) => {
+    return key.toUpperCase()
+  })
+
+  s = s.replace(/([a-z])/, (node, key) => key.toUpperCase())
+
+  console.log(s);
+
+  return s
 }

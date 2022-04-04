@@ -1,19 +1,19 @@
-<div class="loading-wrap" v-if="item">
-  <ul :class="`loading-wrap_bd ${ position ? '' : 'center' }`" :style="position">
-    <li :class="`loading-wrap_bd_item ${item.isShow ? 'fade' : ''}`">
+<div class="loading-wrap" v-if="vOptions">
+  <ul class="loading-wrap_bd" :style="vOptions.position">
+    <li :class="`loading-wrap_bd_item ${vOptions.isShow ? 'fade' : ''}`">
 
       <div class="loading-wrap_bd_item_content">
 
         <div class="loading-wrap_bd_item_content_icon">
-          <img :src="img" alt="loading..." />
+          <img :src="vOptions.imgSrc" alt="loading..." />
         </div>
 
-        <p class="loading-wrap_bd_item_content_text" v-html="item.message" v-if="item.message">
+        <p class="loading-wrap_bd_item_content_text" v-html="vOptions.message" v-if="vOptions.message">
         </p>
       </div>
 
     </li>
   </ul>
 
-  <div class="loading-wrap_mask" v-if="item.isMaskShow"></div>
+  <div class="loading-wrap_mask" v-if="vOptions.isMaskShow"></div>
 </div>

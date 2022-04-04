@@ -1,44 +1,47 @@
 <template src="./index.html"></template>
 
 <script>
-import img from '@/assets/images/loading1.gif'
+import imgSrc from '@/assets/images/loading1.gif'
 
 export default {
   name: 'Loading',
 
   props: {
-    position: [Object, null, undefined],
+    options: {
+      type: [Object, null],
+      default: () => null
+    },
   },
 
   data() {
     return {
-      item: null,
+      vOptions: Object.assign(this.getDefaultOptions(), this.options),
       delay: 300,
-      img,
     }
   },
 
   methods: {
-    show ({ message = '', imgSrc = '', duration = -1, isMaskShow = true, onClose = () => {} } = {}) {
-      const item = {
-        id: 'toast_' + Date.now() + '_' + String(Math.random()).slice(2),
-        message,
-        duration,
+    getDefaultOptions() {
+      return {
+        id: 'loading_' + Date.now() + '_' + String(Math.random()).slice(2),
+        message: '',
+        duration: 2000,
         isShow: true,
-        isMaskShow,
-        onClose,
+        isMaskShow: true,
+        imgSrc,
       }
+    },
 
-      imgSrc && (this.img = imgSrc)
-
-      this.item = item
+    show (options = {}) {
+      this.vOptions = Object.assign(this.getDefaultOptions(), options)
+      const { duration } = this.vOptions
 
       duration > 0 && setTimeout(() => {
         this.hide()
       }, duration)
 
       const rs = {
-        config: this.item,
+        options: this.vOptions,
         ctx: this,
         ref: this.$el,
         close: () => this.hide()
@@ -50,10 +53,11 @@ export default {
     },
 
     hide() {
-      this.item.isShow = false
+      this.vOptions.isShow = false
 
       setTimeout(() => {
-        this.item = null
+        this.vOptions.onClose?.()
+        this.vOptions = null
         this.$nextTick(() => {
           this.$destroy()
           this.$refs?.ref?.remove()

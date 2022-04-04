@@ -9,13 +9,13 @@ export type TName =
 
 export type INotify = {
   install(Vue: { extend: (arg0: any) => any }): void
-  show(config: INotifyConfig): INotifyRet
+  show(options: INotifyConfig): INotifyRet
 } & {
-  [K in TName]: (config: INotifyConfig) => INotifyRet
+  [K in TName]: (options: INotifyConfig) => INotifyRet
 }
 
 export interface INotifyRet {
-  config: INotifyConfig & { id: string }
+  options: INotifyConfig & { id: string }
   ctx: CombinedVueInstance<Vue, object, object, object, Record<never, any>>
   ref: HTMLElement
   close: Function
@@ -29,6 +29,6 @@ export interface INotifyConfig {
   message: string
   duration?: number
   isMaskShow?: boolean
-  position?: Object
+  position?: Record<string, any>
   onClose?: Function
 }

@@ -1,13 +1,15 @@
-export * from './virtual-list'
-export * from './loading'
-export * from './notify'
+import VLoading from './loading'
+import VNotify from './notify'
+import VVirtualList from './virtual-list'
 
-import Loading from './loading'
-import Notify from './notify'
-import VirtualList from './virtual-list'
+export {
+  VLoading,
+  VNotify,
+  VVirtualList,
+}
 
 export default {
-  Loading,
-  Notify,
-  VirtualList,
+  VLoading,
+  VNotify,
+  VVirtualList,
 }

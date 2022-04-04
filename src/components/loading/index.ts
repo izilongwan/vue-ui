@@ -1,16 +1,20 @@
 import LoadingComponent from './index.vue'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
-import { ILoading } from './typing'
+import { ILoading, ILoadingConfig } from './typing'
 
 let Ctr: VueConstructor
 
-function getInstance(position: any): any {
+function getInstance(options: ILoadingConfig): any {
   if (!Ctr) {
     Ctr = Vue.extend(LoadingComponent)
   }
 
-  const instance = new Ctr()
+  const instance = new Ctr({
+    propsData: {
+      options,
+    }
+  })
   mounteInstance(instance)
   return instance
 }
@@ -23,10 +27,10 @@ function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
 }
 
 export const Loading: ILoading = {
-  show({ message, imgSrc, duration, isMaskShow, position, onClose } = {}) {
-    const instance = getInstance(position)
+  show(options = {}) {
+    const instance = getInstance(options)
 
-    return instance.show({ message, imgSrc, duration, isMaskShow, position, onClose })
+    return instance.show(options)
   },
 
   install(Vue: { extend: (arg0: any) => any }) {

@@ -13,12 +13,9 @@
 	&_bd {
 		position: fixed;
 		z-index: 999;
-
-		&.center {
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%, -50%);
-		}
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 
 		&_item {
 			height: 100%;

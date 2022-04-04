@@ -17,21 +17,23 @@ export default {
   },
 
   methods: {
-    add ({ type = 'primary', title = 'Notify', message = '', duration = 2000, onClose = () => {} }) {
-      const id = 'notify_' + Date.now() + '_' + String(Math.random()).slice(2)
-
-      const item = {
-        id,
-        type,
-        title,
-        message,
-        duration,
+    getDefaultOptions() {
+      return {
+        id: 'notify_' + Date.now() + '_' + String(Math.random()).slice(2),
+        type: 'primary',
+        title: 'Notify',
+        message: '',
+        duration: 2000,
         isShow: true,
-        onClose,
       }
+    },
 
-      this.listMap[id] = item
-      this.list.push(item)
+    add (options = {}) {
+      const defaultOptions = Object.assign(this.getDefaultOptions(), options)
+      const { id, duration } = defaultOptions
+
+      this.listMap[id] = defaultOptions
+      this.list.push(defaultOptions)
 
       duration > 0 && setTimeout(() => {
         this.hide(id)
@@ -39,7 +41,7 @@ export default {
 
       const rs = {
         ctx: this,
-        config: item,
+        options: defaultOptions,
         ref: null,
         close: () => this.hide(id)
       }
@@ -57,7 +59,7 @@ export default {
 
       setTimeout((id) => {
         const idx = this.findListIndex(id)
-        this.listMap?.[id]?.onClose(id, idx)
+        this.listMap?.[id]?.onClose?.(id, idx)
         idx >= 0 && this.list.splice(idx, 1)
         delete this.listMap?.[id]
       }, this.delay, id)
