@@ -23,7 +23,5 @@ export function mediumHorizontalName(str: string) {
 
   s = s.replace(/([a-z])/, (node, key) => key.toUpperCase())
 
-  console.log(s);
-
   return s
 }

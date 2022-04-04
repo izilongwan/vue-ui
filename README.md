@@ -9,26 +9,26 @@ $ or yarn add @izilong/vue-ui
 
 - js
 ```js
-import VueUI, { VNotify, VLoading, VVurtualList } from '@izilong/vue-ui'
+import VUI, { Notify, Loading, VurtualList } from '@izilong/vue-ui'
 import '@izilong/vue-ui/dist/css/index.css'
 ```
 
-- VNotify
+- Notify
 ```js
-VNotify({ type, message, duration, isMaskShow, position })
+Notify({ type, message, duration, isMaskShow, position })
 
-VNotify[type](message, duration, isMaskShow, position)
+Notify[type](message, duration, isMaskShow, position)
 
 ```
 
-- VLoading
+- Loading
 ```js
-VLoading({ message, duration, imgSrc isMaskShow, position })
+Loading({ message, duration, imgSrc isMaskShow, position })
 ```
 
-- VVirtualList
+- VirtualList
 ```vue
-<VVirtualList :listData="listData" :handlePullupLoad="addList">
+<VirtualList :listData="listData" :handlePullupLoad="addList">
     <template #default="{ visibleListData, virtualIdx, positionList }">
         <li
           class="item" v-for="(item, idx) of visibleListData"
@@ -39,14 +39,14 @@ VLoading({ message, duration, imgSrc isMaskShow, position })
             <p class="txt">{{item.text}}</p>
         </li>
     </template>
-</VVirtualList>
+</VirtualList>
 ```
 
 
 ## API Reference
 
 ```js
-VNotify
+Notify
 ```
 
 | Parameter | Type     | Description                |
@@ -60,7 +60,7 @@ VNotify
 
 
 ```js
-VLoading
+Loading
 ```
 
 | Parameter | Type     | Description                       |

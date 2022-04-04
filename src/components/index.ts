@@ -1,15 +1,15 @@
-import VLoading from './loading'
-import VNotify from './notify'
-import VVirtualList from './virtual-list'
+import Loading from './loading'
+import Notify from './notify'
+import VirtualList from './virtual-list'
 
 export {
-  VLoading,
-  VNotify,
-  VVirtualList,
+  Loading,
+  Notify,
+  VirtualList,
 }
 
 export default {
-  VLoading,
-  VNotify,
-  VVirtualList,
+  Loading,
+  Notify,
+  VirtualList,
 }
