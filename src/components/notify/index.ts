@@ -1,3 +1,4 @@
+import { TInstance } from '@/types'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
 import NotifyComponent from './index.vue'
@@ -9,11 +10,11 @@ const positionStateInstance: {
 
 let Ctr: VueConstructor
 
-function getInstance(position: Record<string, any>) {
+function getInstance(myStyle: Record<string, any>) {
   let positionKey = 'default'
 
   try {
-    positionKey = JSON.stringify(position)
+    positionKey = JSON.stringify(myStyle)
   } catch (error) {
 
   } finally {
@@ -28,13 +29,15 @@ function getInstance(position: Record<string, any>) {
     Ctr = Vue.extend(NotifyComponent)
   }
 
-  if (position) {
+  if (myStyle) {
     const instance = new Ctr({
       propsData: {
-        position,
+        myStyle,
       }
     })
+
     mounteInstance(instance)
+
     return positionStateInstance[positionKey] = instance
   }
 
@@ -43,7 +46,7 @@ function getInstance(position: Record<string, any>) {
   return positionStateInstance[positionKey] = instance
 }
 
-function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
+function mounteInstance(instance: TInstance) {
   const oODiv = document.createElement('div')
 
   document.body.appendChild(oODiv)
@@ -54,13 +57,9 @@ const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info']
 
 export const Notify: INotify = {
   show(options) {
-    const instance = getInstance(options.position!)
+    const instance = getInstance(options.style!)
 
     return instance.add(options)
-  },
-
-  install(Vue: { extend: (arg0: any) => any }) {
-    Ctr = Vue.extend(NotifyComponent)
   },
 
   primary(config): any { },

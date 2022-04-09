@@ -9,21 +9,19 @@ $ or yarn add @izilong/vue-ui
 
 - js
 ```js
-import VUI, { Notify, Loading, VurtualList } from '@izilong/vue-ui'
+import VUI, { Notify, Loading, VurtualList, Confirm } from '@izilong/vue-ui'
 import '@izilong/vue-ui/dist/css/index.css'
 ```
 
 - Notify
 ```js
-Notify({ type, message, duration, isMaskShow, position })
-
-Notify[type](message, duration, isMaskShow, position)
-
+Notify({ type, message, duration, isMaskShow, style })
+Notify[type](message, duration, isMaskShow, style)
 ```
 
 - Loading
 ```js
-Loading({ message, duration, imgSrc isMaskShow, position })
+Loading({ message, duration, imgSrc isMaskShow, style })
 ```
 
 - VirtualList
@@ -52,10 +50,10 @@ Notify
 | Parameter | Type     | Description                |
 | :-------- | :------- | :------------------------- |
 | `type` | `string` | **Optional**. primary / success / danger / warning / info
-| `message` | `string` | **Optional**. message
 | `title` | `string` | **Optional**. title
+| `content` | `string` | **Required**. content
 | `duration` | `number` | **Optional**. duration
-| `position` | `object` | **Optional**. {top: 10%, left: 50%}
+| `style` | `object` | **Optional**. {top: 10%, left: 50%}
 
 
 
@@ -65,8 +63,23 @@ Loading
 
 | Parameter | Type     | Description                       |
 | :-------- | :------- | :-------------------------------- |
-| `imgSrc` | `string` | **Optional**. img src
-| `message` | `string` | **Optional**. message
+| `imgSrc` | `string` | **Optional**. import imgSrc from xxx
+| `body` | `string` | **Optional**. HTMLElement
+| `tip` | `string` | **Optional**. tip
 | `duration` | `number` | **Optional**. duration
 | `isMaskShow` | `boolean` | **Optional**. is show mask
-| `position` | `object` | **Optional**. {top: 10%, left: 50%}
+| `style` | `object` | **Optional**. {top: 10%, left: 50%}
+
+
+```js
+Confirm
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `title` | `string` | **Optional**. title
+| `content` | `string` | **Required**. content
+| `leftText` | `number` | **Optional**. leftText
+| `rightText` | `number` | **Optional**. rightText
+| `isMaskShow` | `boolean` | **Optional**. is show mask
+| `style` | `object` | **Optional**. {top: 10%, left: 50%}

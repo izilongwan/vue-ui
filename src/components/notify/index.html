@@ -1,7 +1,7 @@
 <div class="notify-wrap">
-  <div class="notify-wrap_list" :style="position">
+  <div class="notify-wrap_list" :style="myStyle">
     <div v-for="item of list" :key="item.id" ref="ref"
-      :class="`notify-wrap_list_item notify-wrap_list_item-type-${ item.type } ${item.isShow ? 'fade' : ''}`">
+      :class="`notify-wrap_list_item notify-wrap_list_item-type-${ item.type } ${item.isShow ? 'fade-in' : ''} ${ item.isShowAnimate ? 'animate-x' : '' }`">
 
       <span :class="`notify-wrap_list_item_icon iconfont icon-${item.type}`"></span>
 
@@ -12,7 +12,7 @@
           <span class="notify-wrap_list_item_content_title_close" @click="hide(item.id)">+</span>
         </h3>
 
-        <div class="notify-wrap_list_item_content_text" v-html="item.message"></div>
+        <div class="notify-wrap_list_item_content_text" v-html="item.content"></div>
 
       </div>
     </div>

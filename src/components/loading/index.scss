@@ -1,8 +1,6 @@
 .loading-wrap {
-	position: absolute;
-
 	&_mask {
-		position: fixed;
+		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
@@ -11,8 +9,8 @@
 	}
 
 	&_bd {
-		position: fixed;
-		z-index: 999;
+		position: absolute;
+		z-index: 1099;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);

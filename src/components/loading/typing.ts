@@ -1,11 +1,12 @@
 import { CombinedVueInstance } from 'vue/types/vue';
 
 export interface ILoadingConfig {
+  body?: HTMLElement,
   imgSrc?: string,
-  message?: string
+  tip?: string
   duration?: number
   isMaskShow?: boolean
-  position?: Object
+  style?: Object
   onClose?: Function
 }
 

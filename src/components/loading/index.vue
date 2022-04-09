@@ -24,7 +24,7 @@ export default {
     getDefaultOptions() {
       return {
         id: 'loading_' + Date.now() + '_' + String(Math.random()).slice(2),
-        message: '',
+        tip: '',
         duration: 2000,
         isShow: true,
         isMaskShow: true,
@@ -43,11 +43,11 @@ export default {
       const rs = {
         options: this.vOptions,
         ctx: this,
-        ref: this.$el,
+        ref: this?.$el,
         close: () => this.hide()
       }
 
-      this.$nextTick(() => rs.ref = this.$el)
+      this.$nextTick(() => rs.ref = this?.$el)
 
       return rs
     },
@@ -60,7 +60,7 @@ export default {
         this.vOptions = null
         this.$nextTick(() => {
           this.$destroy()
-          this.$refs?.ref?.remove()
+          this?.$el?.remove()
         })
       }, this.delay)
     }

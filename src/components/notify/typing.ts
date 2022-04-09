@@ -8,7 +8,6 @@ export type TName =
   | 'info'
 
 export type INotify = {
-  install(Vue: { extend: (arg0: any) => any }): void
   show(options: INotifyConfig): INotifyRet
 } & {
   [K in TName]: (options: INotifyConfig) => INotifyRet
@@ -26,9 +25,9 @@ export interface INotifyRet {
 export interface INotifyConfig {
   type?: TName
   title?: string
-  message: string
+  content: string
   duration?: number
   isMaskShow?: boolean
-  position?: Record<string, any>
+  style?: Record<string, any>
   onClose?: Function
 }

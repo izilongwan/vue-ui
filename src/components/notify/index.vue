@@ -5,7 +5,10 @@ export default {
   name: 'Notify',
 
   props: {
-    position: [Object, null, undefined,],
+    myStyle: {
+      type: Object,
+      default: () => ({}),
+    },
   },
 
   data() {
@@ -22,9 +25,10 @@ export default {
         id: 'notify_' + Date.now() + '_' + String(Math.random()).slice(2),
         type: 'primary',
         title: 'Notify',
-        message: '',
+        content: '',
         duration: 2000,
         isShow: true,
+        isShowAnimate: false,
       }
     },
 

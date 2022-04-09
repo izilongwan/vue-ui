@@ -2,6 +2,7 @@ import LoadingComponent from './index.vue'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
 import { ILoading, ILoadingConfig } from './typing'
+import { TInstance } from '@/types'
 
 let Ctr: VueConstructor
 
@@ -15,14 +16,16 @@ function getInstance(options: ILoadingConfig): any {
       options,
     }
   })
-  mounteInstance(instance)
+
+  mounteInstance(instance, options)
+
   return instance
 }
 
-function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
-  const oODiv = document.createElement('div')
+function mounteInstance(instance: TInstance, options: ILoadingConfig) {
+  const oODiv = document.createElement('div');
 
-  document.body.appendChild(oODiv)
+  (options.body ?? document.body).appendChild(oODiv)
   instance.$mount(oODiv)
 }
 
