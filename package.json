@@ -1,15 +1,18 @@
 {
   "name": "@izilong/vue-ui",
-  "version": "1.0.10",
+  "version": "1.2.3",
   "description": "UI for vue",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "npx webpack serve --config build/dev.ts",
-    "build": "npx webpack --config build/prod.ts"
+    "build": "mode=prod npx webpack --config build/prod.ts",
+    "publish": "npm run build && npm publish"
   },
   "dependencies": {
     "@types/node": "^17.0.23",
+    "@types/vue": "^2.0.0",
     "@types/webpack": "^5.28.0",
     "ts-node": "^10.7.0",
     "typescript": "^4.6.3"
@@ -21,6 +24,7 @@
     "faker": "^5.5.3",
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.4.0",
+    "mini-css-extract-plugin": "^2.6.0",
     "sass": "^1.43.2",
     "sass-loader": "^12.2.0",
     "style-loader": "^3.3.0",

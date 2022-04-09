@@ -6,6 +6,8 @@ const { VueLoaderPlugin } = require('vue-loader'),
 module.exports = Object.assign({}, base, {
   mode: 'development',
 
+  entry: '/test/index.ts',
+
   plugins: [
     new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
@@ -15,7 +17,7 @@ module.exports = Object.assign({}, base, {
   ],
 
   devServer: {
-    port: 3001,
+    port: 3002,
     compress: true,
     hot: true,
   }

@@ -1,6 +1,8 @@
-import NotifyComponent from './index.vue'
+import { TInstance } from '@/types'
 import Vue from 'vue'
 import { VueConstructor } from 'vue/types/umd'
+import NotifyComponent from './index.vue'
+import { INotify, TName } from './typing'
 
 const positionStateInstance: {
   [key: string]: any
@@ -8,11 +10,11 @@ const positionStateInstance: {
 
 let Ctr: VueConstructor
 
-function getInstance(position: any) {
-  let positionKey = 'center'
+function getInstance(myStyle: Record<string, any>) {
+  let positionKey = 'default'
 
   try {
-    positionKey = JSON.stringify(position)
+    positionKey = JSON.stringify(myStyle)
   } catch (error) {
 
   } finally {
@@ -27,13 +29,15 @@ function getInstance(position: any) {
     Ctr = Vue.extend(NotifyComponent)
   }
 
-  if (position) {
+  if (myStyle) {
     const instance = new Ctr({
       propsData: {
-        position,
+        myStyle,
       }
     })
+
     mounteInstance(instance)
+
     return positionStateInstance[positionKey] = instance
   }
 
@@ -42,58 +46,36 @@ function getInstance(position: any) {
   return positionStateInstance[positionKey] = instance
 }
 
-function mounteInstance(instance: { $mount: (arg0: HTMLDivElement) => void }) {
+function mounteInstance(instance: TInstance) {
   const oODiv = document.createElement('div')
 
   document.body.appendChild(oODiv)
   instance.$mount(oODiv)
 }
 
-type TName = 'primary' | 'success' | 'danger' | 'warning' | 'info' | 'loading'
-const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info', 'loading']
+const types: TName[] = ['primary', 'success', 'danger', 'warning', 'info']
 
-type INotify = {
-  install(Vue: { extend: (arg0: any) => any }): void
-  (config: INotifyConfig): Function;
-} & {
-  [K in TName]?: Function;
-}
+export const Notify: INotify = {
+  show(options) {
+    const instance = getInstance(options.style!)
 
-const Notify: INotify = ({ type, message, title, duration, position, onClose }: INotifyConfig) => {
-  const instance = getInstance(position)
+    return instance.add(options)
+  },
 
-  return instance.add({ type, title, message, duration, onClose })
+  primary(config): any { },
+  success(config): any { },
+  danger(config): any { },
+  warning(config): any { },
+  info(config): any { },
+  ...NotifyComponent,
 }
 
 types.forEach(type => {
-  Notify[type] = (message: string | INotifyConfig, duration: number, position: Object, onClose: Function, title: string) => {
-    if (message && typeof message === 'object') {
-      return Notify({ ...message, type })
-    }
+  Notify[type] = (config) => {
+    Object.assign(config, { type })
 
-    return Notify({
-      type,
-      title,
-      message,
-      duration,
-      position,
-      onClose,
-    })
+    return Notify.show(config)
   }
 })
-
-Notify.install = (Vue: { extend: (arg0: any) => any }) => {
-  Ctr = Vue.extend(NotifyComponent)
-}
-
-interface INotifyConfig {
-  type?: string
-  title?: string
-  message?: string
-  duration?: number
-  isMaskShow?: boolean
-  position: Object
-  onClose: Function
-}
 
 export default Notify

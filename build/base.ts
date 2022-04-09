@@ -1,4 +1,7 @@
 const path = require('path')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+
+const { mode } = process.env
 
 module.exports = {
   entry: '/src/index.ts',
@@ -21,7 +24,9 @@ module.exports = {
       {
         test: /\.s?css$/,
         use: [
-          'style-loader',
+          mode === 'prod'
+            ? MiniCssExtractPlugin.loader
+            : 'style-loader',
           'css-loader',
           'sass-loader',
         ],
@@ -45,7 +50,7 @@ module.exports = {
                 }
               },
 
-              limit: 1024 * 100
+              limit: 1024 * 50
             }
           }
         ],
@@ -55,9 +60,27 @@ module.exports = {
         test: /\.tsx?$/,
         use: ['babel-loader', 'ts-loader'],
         exclude: /node_modules/,
+      },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/i, // 处理字体
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 1024 * 20,
+              fallback: {
+                loader: 'file-loader',
+                options: {
+                  name: 'fonts/[name]-[contenthash:6].[ext]'
+                }
+              }
+            }
+          }
+        ],
+        exclude: /node_modules/,
       }
     ]
   },
 }
 
-export {}
+export { }

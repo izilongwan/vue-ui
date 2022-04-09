@@ -1,5 +1,5 @@
-@import '~@/styles/mixins.scss';
-@import '~@/styles/color.scss';
+@import '@/styles/mixins.scss';
+@import '@/styles/color.scss';
 
 .notify-wrap {
 	position: absolute;
@@ -7,21 +7,17 @@
 	&_list {
 		position: fixed;
 		width: 200px;
-		top: 10%;
-
-		&.center {
-			left: 50%;
-			transform: translateX(-50%);
-		}
+		top: 5%;
+		right: 0;
 
 		&_item {
+			display: flex;
 			border-radius: 5px;
 			padding: 5px 10px;
 			opacity: 0;
-			transition: all 0.3s;
 			color: #fff;
-			border: 1px solid;
-			box-shadow: 1px 1px 4px 1px #ccc;
+			transition: all 0.5s, transform 1s;
+			transform: translateX(500%);
 
 			&-type-primary {
 				background-color: $primary-color;
@@ -54,24 +50,53 @@
 				color: #666;
 			}
 
-			&.fade {
+			&.fade-in {
 				opacity: 1;
+				transform: translateX(0);
+				border: 1px solid;
+				box-shadow: 1px 1px 4px 1px #ddd;
 			}
 
 			&:not(:first-child) {
 				margin-top: 10px;
 			}
 
+			&_icon {
+				font-size: 20px;
+				padding: 4px 8px 0 0;
+			}
+
 			&_content {
+				max-width: 85%;
+				flex: 1;
+
 				&_title {
 					@include ellipsis;
-					padding: 5px 0;
+					position: relative;
+					padding: 5px 20px 5px 0;
+					height: 20px;
 					font-weight: bold;
-					margin-bottom: 5px;
+					justify-content: space-between;
+					align-items: center;
 
 					&_close {
-						float: right;
+						position: absolute;
+						top: 1px;
+						right: 0;
+						cursor: pointer;
+						transition: transform 0.4s;
+						transform: rotate(45deg);
+						font-size: 25px;
+
+						&:hover {
+							transform: rotate(135deg);
+						}
 					}
+				}
+
+				&_text {
+					margin-bottom: 5px;
+					line-height: 18px;
 				}
 			}
 		}

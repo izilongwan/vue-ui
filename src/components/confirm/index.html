@@ -1,0 +1,23 @@
+<div :class="`confirm-wrap ${vOptions.isShow ? 'fade-in' : ''}`" v-if="vOptions">
+  <div class="confirm-wrap_bd" @click="handleClick" :style="vOptions.style">
+    <div class="confirm-wrap_bd_title confirm-wrap_bd_cell">
+      <span class="confirm-wrap_bd_title_icon iconfont icon-info"></span>
+      <h3 class="confirm-wrap_bd_title_text">
+        {{vOptions.title}}
+      </h3>
+      <span class="confirm-wrap_bd_title_close" data-field="0">+</span>
+    </div>
+
+    <div class="confirm-wrap_bd_content confirm-wrap_bd_cell" v-html="vOptions.content"></div>
+
+    <div class="confirm-wrap_bd_btn-wrap confirm-wrap_bd_cell">
+      <button class="confirm-wrap_bd_btn-wrap_btn confirm-wrap_bd_btn-wrap_left"
+        data-field="1">{{vOptions.leftText}}</button>
+
+      <button class="confirm-wrap_bd_btn-wrap_btn confirm-wrap_bd_btn-wrap_right" data-field="0"
+        v-if="vOptions.rightText">{{vOptions.rightText}}</button>
+    </div>
+  </div>
+
+  <div class="confirm-wrap_mask" v-if="vOptions.isMaskShow"></div>
+</div>
