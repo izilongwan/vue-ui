@@ -1,6 +1,6 @@
 {
   "name": "@izilong/vue-ui",
-  "version": "1.2.3",
+  "version": "1.2.32",
   "description": "UI for vue",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "npx webpack serve --config build/dev.ts",
     "build": "mode=prod npx webpack --config build/prod.ts",
-    "publish": "npm run build && npm publish"
+    "publish": "npm publish"
   },
   "dependencies": {
     "@types/node": "^17.0.23",
