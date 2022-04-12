@@ -25,7 +25,15 @@ function getInstance(options: ILoadingConfig): any {
 function mounteInstance(instance: TInstance, options: ILoadingConfig) {
   const oODiv = document.createElement('div');
 
-  (options.body ?? document.body).appendChild(oODiv)
+  let body = document.body
+
+  if (options.body) {
+    body = typeof(options.body) === 'string'
+      ? document.querySelector(options.body)!
+      : options.body as HTMLElement
+  }
+
+  body.appendChild(oODiv)
   instance.$mount(oODiv)
 }
 
