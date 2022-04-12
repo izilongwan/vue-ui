@@ -1,6 +1,6 @@
 ### @izilong/vue-ui
 
-- Install｜安装
+- 安装｜install
 ```shell
 npm i @izilong/vue-ui
 ```
@@ -8,16 +8,27 @@ npm i @izilong/vue-ui
 yarn add @izilong/vue-ui
 ```
 
-- js中引入
+- 使用｜use
 ```js
-import ReactUI, { Notify, VurtualList, Loading, Confirm } from '@izilong/vue-ui'
+import XUI, {
+    Notify,
+    VurtualList,
+    Loading,
+    Confirm } from '@izilong/vue-ui'
 ```
-
+- 引入CSS
 ```js
 import '@izilong/vue-ui/dist/css/index.css'
 ```
 
-
+- 组件纵览
+```js
+XUI
+  |-VirtualList
+  |-Loading
+  |-Notify
+  |-Confirm
+```
 
 ## API Reference
 
@@ -52,7 +63,7 @@ import '@izilong/vue-ui/dist/css/index.css'
     | Parameter | Type     | Description                       |
     | :-------- | :------- | :-------------------------------- |
     | `imgSrc` | `string` | **Optional**. import imgSrc from xxx
-    | `body` | `string` | **Optional**. Element | string (document.querySelector)
+    | `body` | `string \| Element` | **Optional**. Element \| string (document.querySelector)
     | `tip` | `string` | **Optional**. tip
     | `duration` | `number` | **Optional**. duration
     | `isMaskShow` | `boolean` | **Optional**. is show mask
