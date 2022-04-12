@@ -52,7 +52,7 @@ import '@izilong/vue-ui/dist/css/index.css'
     | Parameter | Type     | Description                       |
     | :-------- | :------- | :-------------------------------- |
     | `imgSrc` | `string` | **Optional**. import imgSrc from xxx
-    | `body` | `string` | **Optional**. HTMLElement
+    | `body` | `string` | **Optional**. Element | string (document.querySelector)
     | `tip` | `string` | **Optional**. tip
     | `duration` | `number` | **Optional**. duration
     | `isMaskShow` | `boolean` | **Optional**. is show mask

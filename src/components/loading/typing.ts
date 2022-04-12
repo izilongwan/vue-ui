@@ -1,7 +1,7 @@
 import { CombinedVueInstance } from 'vue/types/vue';
 
 export interface ILoadingConfig {
-  body?: HTMLElement,
+  body?: Element | string,
   imgSrc?: string,
   tip?: string
   duration?: number
