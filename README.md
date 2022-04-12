@@ -10,7 +10,7 @@ yarn add @izilong/vue-ui
 
 - 使用｜use
 ```js
-import XUI, {
+import VUI, {
     Notify,
     VurtualList,
     Loading,
@@ -21,16 +21,18 @@ import XUI, {
 import '@izilong/vue-ui/dist/css/index.css'
 ```
 
+
+## API Reference
+
 - 组件纵览
 ```js
-XUI
+VUI
   |-VirtualList
   |-Loading
   |-Notify
   |-Confirm
 ```
 
-## API Reference
 
 - VirtualList
     ```vue
