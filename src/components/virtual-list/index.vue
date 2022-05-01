@@ -3,6 +3,7 @@
 <script>
 import { throttle } from '@/util'
 import { useVirtualList } from './hook'
+import { vuiScoped } from '@/config'
 
 export default {
   name: 'VirtualList',
@@ -54,6 +55,7 @@ export default {
     const { showCount } = this
 
     return {
+      vuiScoped,
       startIndex: 0,
       start: 0,
       end: showCount,

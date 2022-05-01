@@ -2,6 +2,7 @@
 
 <script>
 import imgSrc from '@/assets/images/loading1.gif'
+import { vuiScoped } from '@/config'
 
 export default {
   name: 'Loading',
@@ -15,6 +16,7 @@ export default {
 
   data() {
     return {
+      vuiScoped,
       vOptions: Object.assign(this.getDefaultOptions(), this.options),
       delay: 300,
     }

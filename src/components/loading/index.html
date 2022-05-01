@@ -1,4 +1,4 @@
-<div class="loading-wrap" v-if="vOptions">
+<div :class="`${vuiScoped} loading-wrap`" v-if="vOptions">
   <ul class="loading-wrap_bd" :style="vOptions.style">
     <li :class="`loading-wrap_bd_item ${vOptions.isShow ? 'fade' : ''}`">
 

@@ -3,6 +3,8 @@
 </template>
 
 <script>
+import { vuiScoped } from '@/config'
+
 export default {
   name: 'Confirm',
 
@@ -15,6 +17,7 @@ export default {
 
   data() {
     return {
+      vuiScoped,
       vOptions: Object.assign(this.getDefaultOptions(), this.options),
       promise: null,
       resolve: null,

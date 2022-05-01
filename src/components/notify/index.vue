@@ -1,6 +1,7 @@
 <template src="./index.html"></template>
 
 <script>
+import { vuiScoped } from '@/config'
 export default {
   name: 'Notify',
 
@@ -13,6 +14,7 @@ export default {
 
   data() {
     return {
+      vuiScoped,
       listMap: {},
       list: [],
       delay: 300,

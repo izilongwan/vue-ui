@@ -1,13 +1,10 @@
-<div class="virtual-list-wrap" ref="wrapRef" @scroll="thorttleHandleScrollEvent">
+<div :class="`${vuiScoped} virtual-list-wrap`" ref="wrapRef" @scroll="thorttleHandleScrollEvent">
   <div class="virtual-list-scroll-bar" :style="{ height: totalHeight + 'px' }"></div>
 
   <div class="virtual-list-scroll-content" :style="{ transform: 'translateY(' + scrollTop + 'px)'}">
     <ul class="virtual-list" ref="listRef" @click="handleClick">
-      <slot
-        name="default"
-        :position-list="positionList"
-        :visible-list-data="visibleListData"
-        :virtual-idx="start"></slot>
+      <slot name="default" :position-list="positionList" :visible-list-data="visibleListData" :virtual-idx="start">
+      </slot>
     </ul>
 
     <p :class="['virtual-list-load-tip', isShowLoadTip ? 'show' : '']">{{ loadTip }}</p>
