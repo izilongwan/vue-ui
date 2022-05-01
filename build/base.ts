@@ -6,6 +6,8 @@ const { mode } = process.env
 module.exports = {
   entry: '/src/index.ts',
 
+  devtool: 'eval-cheap-module-source-map',
+
   output: {
     filename: 'index.js',
     clean: true,
