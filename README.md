@@ -11,10 +11,11 @@ yarn add @izilong/vue-ui
 - 使用｜use
 ```js
 import VUI, {
-    Notify,
+    Confirm,
+    Loading
     VurtualList,
-    Loading,
-    Confirm } from '@izilong/vue-ui'
+    Notify,
+} from '@izilong/vue-ui'
 ```
 - 引入CSS
 ```js
@@ -27,11 +28,43 @@ import '@izilong/vue-ui/dist/css/index.css'
 - 组件纵览
 ```js
 VUI
-  |-VirtualList
+  |-Confirm
   |-Loading
   |-Notify
-  |-Confirm
+  |-VirtualList
 ```
+
+
+- Confirm
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `title` | `string` | **Optional**. title
+    | `content` | `string` | **Required**. content
+    | `leftText` | `number` | **Optional**. leftText
+    | `rightText` | `number` | **Optional**. rightText
+    | `isMaskShow` | `boolean` | **Optional**. is show mask
+    | `style` | `object` | **Optional**. { top: 10%, left: 50% }
+
+
+- Loading
+    | Parameter | Type     | Description                       |
+    | :-------- | :------- | :-------------------------------- |
+    | `imgSrc` | `string` | **Optional**. import imgSrc from xxx
+    | `body` | `string \| Element` | **Optional**. Element \| string (document.querySelector)
+    | `tip` | `string` | **Optional**. tip
+    | `duration` | `number` | **Optional**. duration
+    | `isMaskShow` | `boolean` | **Optional**. is show mask
+    | `style` | `object` | **Optional**. { top: 10%, left: 50% }
+
+
+- Notify
+    | Parameter | Type     | Description                |
+    | :-------- | :------- | :------------------------- |
+    | `type` | `string` | **Optional**. primary \| success \| danger \| warning \| info
+    | `title` | `string` | **Optional**. title
+    | `content` | `string` | **Required**. content
+    | `duration` | `number` | **Optional**. duration
+    | `style` | `object` | **Optional**. {top: 10%, left: 50%}
 
 
 - VirtualList
@@ -49,35 +82,3 @@ VUI
         </template>
     </VirtualList>
     ```
-
-- Notify
-    | Parameter | Type     | Description                |
-    | :-------- | :------- | :------------------------- |
-    | `type` | `string` | **Optional**. primary \| success \| danger \| warning \| info
-    | `title` | `string` | **Optional**. title
-    | `content` | `string` | **Required**. content
-    | `duration` | `number` | **Optional**. duration
-    | `style` | `object` | **Optional**. {top: 10%, left: 50%}
-
-
-
-- Loading
-    | Parameter | Type     | Description                       |
-    | :-------- | :------- | :-------------------------------- |
-    | `imgSrc` | `string` | **Optional**. import imgSrc from xxx
-    | `body` | `string \| Element` | **Optional**. Element \| string (document.querySelector)
-    | `tip` | `string` | **Optional**. tip
-    | `duration` | `number` | **Optional**. duration
-    | `isMaskShow` | `boolean` | **Optional**. is show mask
-    | `style` | `object` | **Optional**. { top: 10%, left: 50% }
-
-
-- Confirm
-    | Parameter | Type     | Description                       |
-    | :-------- | :------- | :-------------------------------- |
-    | `title` | `string` | **Optional**. title
-    | `content` | `string` | **Required**. content
-    | `leftText` | `number` | **Optional**. leftText
-    | `rightText` | `number` | **Optional**. rightText
-    | `isMaskShow` | `boolean` | **Optional**. is show mask
-    | `style` | `object` | **Optional**. { top: 10%, left: 50% }

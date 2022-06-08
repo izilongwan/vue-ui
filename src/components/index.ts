@@ -1,18 +1,18 @@
+import Confirm from './confirm'
 import Loading from './loading'
 import Notify from './notify'
 import VirtualList from './virtual-list'
-import Confirm from './confirm'
 
 export {
+  Confirm,
   Loading,
   Notify,
   VirtualList,
-  Confirm,
 }
 
 export default {
+  Confirm,
   Loading,
   Notify,
   VirtualList,
-  Confirm,
 }
